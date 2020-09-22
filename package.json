@@ -2,16 +2,21 @@
   "name": "react-image-gallery",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://maheshkumarsoni.github.io/react-image-gallery",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "autoprefixer": "^9.8.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "tailwindcss": "^1.8.10"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "deploy": "npm run build && gh-pages -d build",
+    "build:css": "postcss src/assets/css/tailwind.css -o src/assets/css/style.css",
+    "start": "npm run build:css && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -30,5 +35,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "postcss": "^8.0.7",
+    "postcss-cli": "^7.1.2"
   }
 }

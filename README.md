@@ -1,9 +1,11 @@
- [React Image Gallery](https://maheshkumarsoni.github.io/react-image-gallery)
+# [React Image Gallery](https://maheshkumarsoni.github.io/react-image-gallery)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## note
+use autoprefixer -> 9.8.6 latest give errors use this instead.
+use postcss-cli -> 7.1.2 latest give errors use this instead.
 
 ## Available Scripts
-
 In the project directory, you can run:
 
 ### `npm start`
