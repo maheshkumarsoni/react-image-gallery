@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from './Image';
 
-export default function Images({ title }) {
-    title('React Gallery');
+export default function Images() {
+
     const [images, setimages] = useState([
         "https://images.unsplash.com/photo-1600712365047-26f7a4f04d44?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
         "https://images.unsplash.com/photo-1539614119683-5bfaf2013b91?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
@@ -13,8 +13,20 @@ export default function Images({ title }) {
     const [newImageUrl, setNewImageUrl] = useState('');
     // const [isHovering, setIsHovering] = useState(-1);
 
+    // focusing on inputBox using React's useRef
+    const inputRef = useRef(null);
+    useEffect(() => {
+        inputRef.current.focus();
+    }, []);
+
+    // focusing on inputbox using javascript
+    // useEffect(() => {
+    //     const inputbox = document.getElementById('inputbox');
+    //     inputbox.focus();
+    // }, []);
+
     function ShowImage() {
-        return images.map((img, index) => <Image image={img} index={index} handleOnClickImageRemove={handleOnClickImageRemove} />);
+        return images.map((img, index) => <Image image={img} index={index} handleOnClickImageRemove={handleOnClickImageRemove} key={index} />);
     }
 
     // function ShowImage() {
@@ -55,6 +67,8 @@ export default function Images({ title }) {
                 ...images
             ]);
             setNewImageUrl('');
+            inputRef.current.focus();
+
         }
     }
 
@@ -65,16 +79,22 @@ export default function Images({ title }) {
             </div>
             <div className="flex justify-between my-5">
                 <div className="w-full">
-                    <input type="text" className="p-2 border border-gray-800 shadow rounded w-full"
+                    <input
+                        style={{ caretColor: 'teal', fontSize: 40 }}
+                        // id="inputbox"
+                        ref={inputRef}
+                        type="text"
+                        className="p-2  rounded sm:rounded-t md:rounded-b-lg lg:rounded-none xl:rounded-l border border-gray-800 shadow w-full px-4 leading-tight"
                         value={newImageUrl}
                         onChange={handleOnChangeImageUrl} />
                 </div>
-            </div>
-            <div className="">
-                <button disabled={newImageUrl === ''} onClick={handleOnClickAddImage}
-                    className={`p-2 mb-10 text-white rounded ${newImageUrl !== '' ? "bg-green-700" : "bg-gray-700"}`}>
-                    Add Image
-                </button>
+                <div className="right-0">
+                    <button disabled={newImageUrl === ''} onClick={handleOnClickAddImage}
+                        className={`p-3 pb-2  rounded sm:rounded-t md:rounded-b-lg lg:rounded-none xl:rounded-r mb-10 ml-1 rounded text-black font-bold font-serif 
+                                ${newImageUrl !== '' ? "bg-teal-500" : "bg-teal-200"}`}>
+                        Add Image
+                    </button>
+                </div>
             </div>
         </section>
     );

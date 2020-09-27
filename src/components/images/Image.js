@@ -15,5 +15,5 @@ export default function Image({ image, index, handleOnClickImageRemove }) {
                 <img src={image} width="250px" alt={image} />
             </div>
         </div>
-    )
+    );
 }
