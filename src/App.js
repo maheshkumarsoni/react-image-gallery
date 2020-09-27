@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import Images from './components/Images';
+import Images from './components/images/Images';
 import './assets/css/style.css';
 
 export default function App() {
 
-    const [title, setTitle] = useState('React Gallery');
+    const [title, setTitle] = useState('React Image Toggler');
 
     return (
         <section className="flex justify-center">
@@ -14,7 +14,7 @@ export default function App() {
                         {title}
                     </div>
                     <h1>
-                    <Images />
+                        <Images title={setTitle} />
                     </h1>
                 </div>
             </div>
